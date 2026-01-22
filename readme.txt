@@ -2,9 +2,9 @@
 Contributors: @betacore
 Tags: offline mode, under construction, redirect
 Requires at least: 5.2
-Tested up to: 6.0.1
-Requires PHP: 7
-Stable tag: 2.2
+Tested up to: 6.7
+Requires PHP: 7.4
+Stable tag: 2.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,12 @@ To answer to foo bar dilemma. We still don't know how the foo hit the bar. But 4
 4. If you want a background image, no problem! Branding is really simple.
 
 == Changelog ==
+
+= 2.3 =
+* Fixed undefined array key "ssso_visible_post" warning in classes/post.php on PHP 8+
+* Fixed undefined array key "post_type" warning in classes/post.php on PHP 8+
+* Tested up to WordPress 6.7
+* Updated minimum PHP requirement to 7.4
 
 = 2.2 =
 * Fixed an undefined index error in the rights.php functions file. Thanks @pimschaaf!

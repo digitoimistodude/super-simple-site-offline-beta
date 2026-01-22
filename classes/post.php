@@ -77,7 +77,8 @@ class ssso_postOverride {
         }
  
         // Check the user's permissions.
-        if ( 'page' == $_POST['post_type'] ) {
+        $post_type = isset( $_POST['post_type'] ) ? $_POST['post_type'] : get_post_type( $post_id );
+        if ( 'page' == $post_type ) {
             if ( ! current_user_can( 'edit_page', $post_id ) ) {
                 return $post_id;
             }
@@ -86,12 +87,12 @@ class ssso_postOverride {
                 return $post_id;
             }
         }
- 
+
         /* OK, it's safe for us to save the data now. */
- 
-        // Sanitize the user input.
-        $mydata = sanitize_text_field( $_POST['ssso_visible_post'] );
- 
+
+        // Sanitize the user input (checkbox may not be set when unchecked).
+        $mydata = isset( $_POST['ssso_visible_post'] ) ? sanitize_text_field( $_POST['ssso_visible_post'] ) : '';
+
         // Update the meta field.
         update_post_meta( $post_id, 'ssso_post_override', $mydata );
     }
